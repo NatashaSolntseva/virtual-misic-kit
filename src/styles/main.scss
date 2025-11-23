@@ -1,0 +1,250 @@
+@use './variables' as *;
+
+body {
+  font-family: Arial, sans-serif;
+  background: $kalimba-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button:disabled,
+input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+body.disabled .tine {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.kalimba-app {
+  text-align: center;
+}
+
+.kalimba {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.kalimba-body {
+  position: relative;
+  background: linear-gradient(180deg, $kalimba-body-top, $kalimba-body-bottom);
+  width: 480px; 
+  height: 380px;
+  border-radius: 10px;
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px; 
+  padding-top: 50px;
+  box-shadow: $kalimba-shadow;
+  overflow: hidden;
+}
+
+.tine {
+  background: linear-gradient(to bottom, $tine-default-top, $tine-default-bottom);
+  width: 18px; 
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.tine:nth-child(1), .tine:nth-child(14) { height: 70px; }
+.tine:nth-child(2), .tine:nth-child(13) { height: 85px; }
+.tine:nth-child(3), .tine:nth-child(12) { height: 100px; }
+.tine:nth-child(4), .tine:nth-child(11) { height: 115px; }
+.tine:nth-child(5), .tine:nth-child(10) { height: 130px; }
+.tine:nth-child(6), .tine:nth-child(9) { height: 145px; }
+.tine:nth-child(7), .tine:nth-child(8) { height: 160px; }
+
+.tine:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(to bottom, $tine-hover-top, $tine-hover-bottom);
+}
+
+.tine.active {
+  background: linear-gradient(to bottom, $tine-active-top, $tine-active-bottom);
+  transform: translateY(-3px);
+  box-shadow: $tine-active-glow;
+}
+
+.tine-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  color: $tine-label-color;
+}
+
+.edit-btn {
+  position: absolute;
+  top: -22px;
+  right: -8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.sound-hole {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at center, $sound-hole-inner 30%, $sound-hole-outer 90%);
+  border-radius: 50%;
+  box-shadow: $sound-hole-inner-shadow;
+  z-index: 0; 
+}
+
+.sequence-panel {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-input {
+  position: absolute;
+  padding: 4px 6px;
+  border: 1px solid $sound-hole-inner;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .kalimba-body {
+    width: 400px;
+    height: 340px;
+    padding-top: 40px;
+    gap: 6px;
+  }
+
+  .tine {
+    width: 16px;
+  }
+
+  .tine:nth-child(1), .tine:nth-child(14) { height: 65px; }
+  .tine:nth-child(2), .tine:nth-child(13) { height: 80px; }
+  .tine:nth-child(3), .tine:nth-child(12) { height: 95px; }
+  .tine:nth-child(4), .tine:nth-child(11) { height: 110px; }
+  .tine:nth-child(5), .tine:nth-child(10) { height: 125px; }
+  .tine:nth-child(6), .tine:nth-child(9)  { height: 140px; }
+  .tine:nth-child(7), .tine:nth-child(8)  { height: 155px; }
+
+  .sound-hole {
+    width: 65px;
+    height: 65px;
+    bottom: 24%;
+  }
+
+  .tine-label {
+    bottom: -18px;
+    font-size: 14px;
+  }
+
+  .edit-btn {
+    top: -18px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 450px) {
+  .kalimba-body {
+    width: 320px;
+    height: 280px;
+    padding-top: 35px;
+    gap: 5px;
+  }
+
+  .tine {
+    width: 13px;
+  }
+
+  .tine:nth-child(1), .tine:nth-child(14) { height: 55px; }
+  .tine:nth-child(2), .tine:nth-child(13) { height: 70px; }
+  .tine:nth-child(3), .tine:nth-child(12) { height: 85px; }
+  .tine:nth-child(4), .tine:nth-child(11) { height: 95px; }
+  .tine:nth-child(5), .tine:nth-child(10) { height: 110px; }
+  .tine:nth-child(6), .tine:nth-child(9)  { height: 120px; }
+  .tine:nth-child(7), .tine:nth-child(8)  { height: 130px; }
+
+  .sound-hole {
+    width: 55px;
+    height: 55px;
+    bottom: 22%;
+  }
+
+  .tine-label {
+    bottom: -16px;
+    font-size: 12px;
+  }
+
+  .edit-btn {
+    top: -16px;
+    font-size: 10px;
+  }
+
+  .sequence-panel {
+    margin-top: 25px;
+
+    input {   
+      font-size: 13px;
+    }
+
+    button {
+      font-size: 13px;
+      padding: 5px 8px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .kalimba-body {
+    width: 280px;
+    height: 260px;
+    padding-top: 30px;
+    gap: 4px;
+  }
+
+  .tine {
+    width: 12px;
+  }
+
+  .sound-hole {
+    width: 50px;
+    height: 50px;
+    bottom: 20%;
+  }
+
+  .tine-label {
+    font-size: 11px;
+  }
+
+  .sequence-panel button {
+    font-size: 12px;
+  }
+}
+
+input,
+button {
+  outline: none;
+  box-shadow: none;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+}

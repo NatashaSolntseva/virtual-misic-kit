@@ -1,0 +1,22 @@
+{
+  "name": "virtual-music-kit",
+  "private": true,
+  "version": "0.0.0",
+  "homepage": "https://rolling-scopes-school.github.io/natashasolntseva-JSFE2025Q3/virtual-music-kit/",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,css,scss}\"",
+    "format:check": "prettier --list-different \"src/**/*.{ts,tsx,js,css,scss}\"",
+    "format:fix": "prettier --write --ignore-unknown \"src/**/*.{ts,tsx,js,css,scss}\"",
+    "deploy": "vite build && gh-pages -d dist -f --dest virtual-music-kit"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "prettier": "3.6.2",
+    "sass": "^1.93.2",
+    "vite": "^7.1.7"
+  }
+}
