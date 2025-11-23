@@ -1,8 +1,7 @@
 {
   "name": "virtual-music-kit",
   "private": true,
-  "version": "0.0.0",
-  "homepage": "https://rolling-scopes-school.github.io/natashasolntseva-JSFE2025Q3/virtual-music-kit/",
+  "version": "0.0.0", 
   "type": "module",
   "scripts": {
     "dev": "vite",
